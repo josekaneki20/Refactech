@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Pedidos</title>
+    <link th:href="@{/tema/Pedidos.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+</head>
+<body>
+<div class="contenedor">
+    <h1>📦 Mis Pedidos</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID Pedido</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.idPedido}"></td>
+            <td th:text="${#temporals.format(pedido.fecha, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${pedido.totalCompra}"></td>
+            <td th:text="${pedido.idEstadoPedido.descripcion}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/catalogoPaginacion}">
+        <button>⬅️ Volver al catálogo</button>
+    </a>
+</div>
+</body>
+</html>

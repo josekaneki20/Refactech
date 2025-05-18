@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/iconos/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/tema/Combinado.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+
+    <meta http-equiv="refresh" content="5;url=/Registro" th:if="${mensaje}">
+    <title>Inicio</title>
+</head>
+
+<body class="fondo">
+
+
+<div class="contenedor" tabindex="0">
+
+    <div class="form-container">
+        <h1 th:text="${contenido}"></h1>
+        <h5 th:text="${mensaje}"></h5>
+        <h2>Registro de Trabajador</h2>
+        <form th:action="@{/trabajador/guardarTrabajador}" th:object="${clientes}" method="POST">
+
+            <div th:if="${errores}">
+                <ul>
+                    <li th:each="error : ${errores}" th:text="${error}" class="error"></li>
+                </ul>
+            </div>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellidoPaterno">Apellido Paterno:</label>
+            <input type="text" id="apellidoPaterno" name="apellidoPaterno" required>
+
+            <label for="apellidoMaterno">Apellido Materno:</label>
+            <input type="text" id="apellidoMaterno" name="apellidoMaterno" required>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="18" max="70" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                <option value="O">Otro</option>
+            </select>
+
+            <label for="numero">Número:</label>
+            <input type="tel" id="numero" name="numero" pattern="[0-9]{10}" placeholder="10 dígitos">
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+
+            <label for="direccion">Dirección:</label>
+            <textarea id="direccion" name="direccion"></textarea>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+
+</body>
+

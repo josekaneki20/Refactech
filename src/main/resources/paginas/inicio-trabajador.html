@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio Trabajador</title>
+    <link th:href="@{/tema/estiloTrabajador.css}" rel="stylesheet">
+</head>
+<body>
+<h1>👷 Bienvenido, <span th:text="${nombreUsuario}">Trabajador</span></h1>
+
+<div class="menu">
+    <a th:href="@{/almacen/inventario}" class="btn">📦 Ver Inventario</a>
+    <a th:href="@{/pedidos/admin}" class="btn">📋 Gestionar Pedidos</a>
+    <a th:href="@{/productos/registro}" class="btn">Registro de Productos</a>
+    <a th:href="@{/productos/muestraCatalogo}" class="btn">🛍️ Catalogo de productos</a>
+    <a th:href="@{/cliente/listaClientes}" class="btn">🛍️ Catalogo de clientes</a>
+    <a th:href="@{/logout}" class="btn salir">🚪 Cerrar Sesión</a>
+</div>
+</body>
+</html>

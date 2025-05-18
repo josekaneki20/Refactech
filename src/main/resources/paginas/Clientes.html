@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Clientes</title>
+  <link th:href="@{/tema/Catalogo.css}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+  <style>
+    /* Estilo adicional para tablas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #0f0;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #0f0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #111;
+    }
+
+    tr:hover {
+        background-color: #222;
+    }
+
+    img {
+        width: 100px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .btn-ver {
+        background-color: #0f0;
+        color: #000;
+    }
+
+    .btn-modificar {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .btn-eliminar {
+        background-color: #e74c3c;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="catalogo-container">
+  <h1>Catálogo de Clientes</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo Electrónico</th>
+      <th>Teléfono</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientes}">
+
+      <!-- Mostrar Nombre completo -->
+      <td th:text="${cliente.nombre} + ' ' + ${cliente.apellidoPaterno} + ' ' + ${cliente.apellidoMaterno}"></td>
+
+      <!-- Mostrar Correo Electrónico -->
+      <td th:text="${cliente.correoElectronico}"></td>
+
+      <!-- Mostrar Teléfono -->
+      <td th:text="${cliente.numero}"></td>
+
+      <td>
+        <!-- Botón para modificar cliente -->
+        <a th:href="@{/cliente/modificar/{id}(id=${cliente.idCliente})}">
+          <button class="btn btn-modificar">Modificar</button>
+        </a>
+
+        <!-- Formulario para eliminar cliente -->
+        <form th:action="@{/cliente/eliminar/{id}(id=${cliente.idCliente})}" method="post" style="display:inline;">
+          <input type="hidden" name="id" th:value="${cliente.idCliente}" />
+          <button type="submit" class="btn btn-eliminar">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/trabajador/inicio" class="btn btn-outline-success btn-lg mt-4">
+    🔙 Volver al Inicio
+  </a>
+
+</div>
+
+</body>
+</html>

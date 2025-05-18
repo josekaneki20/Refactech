@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos de Clientes</title>
+    <link th:href="@{/tema/AdminPedidos.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+
+</head>
+<body>
+<div class="contenedor">
+    <h1>📊 Pedidos de Clientes</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID Pedido</th>
+            <th>Cliente</th>
+            <th>Correo</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.idPedido}"></td>
+            <td th:text="${pedido.cliente.nombre} + ' ' + ${pedido.cliente.apellidoPaterno}"></td>
+            <td th:text="${pedido.cliente.correoElectronico}"></td>
+            <td th:text="${#temporals.format(pedido.fecha, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${pedido.totalCompra}"></td>
+            <td th:text="${pedido.idEstadoPedido.descripcion}"></td>
+            <td>
+                <form th:action="@{/pedidos/admin/actualizar}" method="post">
+                    <input type="hidden" name="idPedido" th:value="${pedido.idPedido}" />
+
+                    <select name="idEstadoPedido">
+                        <option th:each="estado : ${estados}"
+                                th:value="${estado.idEstadoPedido}"
+                                th:text="${estado.descripcion}"
+                                th:selected="${estado.idEstadoPedido == pedido.idEstadoPedido.idEstadoPedido}">
+                        </option>
+                    </select>
+
+                    <button type="submit">Actualizar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/trabajador/inicio" class="btn btn-outline-success btn-lg mt-4">
+        🔙 Volver al Inicio
+    </a>
+
+</div>
+</body>
+</html>

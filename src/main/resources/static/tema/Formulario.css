@@ -1,0 +1,74 @@
+/* Estilos generales */
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Evita el scroll innecesario */
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0f0;
+    width: 90%; /* Se adapta al ancho de la pantalla */
+    max-width: 400px; /* Evita que sea demasiado grande */
+    max-height: 90vh; /* No ocupa más del 90% de la pantalla */
+    overflow-y: auto; /* Activa el scroll si el contenido es demasiado grande */
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #0f0;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 10px;
+    color: #0f0;
+}
+
+/* Inputs y textarea */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #222;
+    border: 1px solid #0f0;
+    color: #0f0;
+    border-radius: 5px;
+}
+
+/* Botón */
+button {
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0c0;
+}
+
+/* 📱 Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .form-container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+}

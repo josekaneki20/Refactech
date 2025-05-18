@@ -1,0 +1,134 @@
+
+body {
+  font-family: "Roboto";
+  font-weight: 400;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 1) 100%;
+}
+
+.container {
+  min-width: 100%;
+  min-height: 100%;
+  display: block;
+  position: relative;
+}
+
+.menu {
+  width: 60px;
+  height: 60px;
+  display: block;
+  position: relative;
+  z-index:10;
+}
+
+.list, .intro {
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  display: flex;
+  position: fixed;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+ transition: all 0.75s ease;
+}
+
+.list {
+  background: #002d00;
+  width: 180px;
+  left: -180px;
+  opacity: 0;
+}
+.list .links {
+  background: #009700;
+  width: 120px;
+  margin: 5px 0;
+  padding: 15px 0;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none; /*  Elimina la línea subrayada */
+  display: inline-block;
+  color: black;
+
+}
+
+.intro {
+  width: 100%;
+  padding: 0 8px;
+  left: 0;
+  text-align: center;
+}
+
+.btn {
+  background: #000;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+}
+.btn::before, .btn::after {
+  background: #fff;
+  width: 20px;
+  height: 2px;
+  left: 10px;
+  display: block;
+  position: absolute;
+  transition: all 0.75s ease;
+  content: "";
+}
+.btn::before {
+  top: 16px;
+}
+.btn::after {
+  bottom: 16px;
+}
+
+.menu:focus-within .list {
+  left: 0;
+  opacity: 1;
+}
+.menu:focus-within .intro {
+  width: calc(100% - 120px);
+  left: 120px;
+}
+.menu:focus-within .btn::before {
+  transform: rotate(45deg) translate(2px, 2px);
+}
+.menu:focus-within .btn::after {
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+letra{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+}
+.contenedor{
+
+     position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+    display: flex;
+    flex-direction: column;  /* Apila la imagen y el texto */
+    align-items: center;      /* Centra en horizontal */
+    justify-content: center;  /* Centra en vertical (si tiene altura) */
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .contenedor img {
+        width: 80%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+    }
+
+    .texto {
+        font-size: 18px;
+    }
+}
+
+
+

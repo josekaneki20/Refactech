@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Pago</title>
+    <link th:href="@{/tema/Pagos.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+</head>
+<body>
+<h1>Confirmar Pago</h1>
+
+<!-- Mostrar errores del backend -->
+<div th:if="${error}">
+    <p th:text="${error}" style="color: red;"></p>
+</div>
+
+<form th:action="@{/pagos/guardar}" method="post" onsubmit="return validarFormulario()">
+    <p>Total a pagar: <strong th:text="${total}">0.00</strong></p>
+
+    <!-- Campos ocultos -->
+    <input type="hidden" name="idPedido" th:value="${idPedido}"/>
+    <input type="hidden" name="fechaPago" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+
+    <!-- Método de pago -->
+    <label for="metodoPago">Método de Pago:</label>
+    <select id="metodoPago" name="metodoPago" required>
+        <option value="">Seleccione...</option>
+        <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+        <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+    </select>
+
+    <!-- Número de tarjeta -->
+    <label for="numeroTarjeta">Número de Tarjeta:</label>
+    <input type="text" id="numeroTarjeta" name="numeroTarjeta"
+           maxlength="16" pattern="[0-9]{16}" required
+           placeholder="Ingrese 16 dígitos sin espacios">
+
+    <!-- CVV -->
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv"
+           maxlength="3" pattern="[0-9]{3}" required
+           placeholder="CVV (3 dígitos)">
+
+    <!-- Nombre del titular -->
+    <label for="nombreTitular">Nombre del Titular:</label>
+    <input type="text" id="nombreTitular" name="nombreTitular"
+           required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,}"
+           placeholder="Nombre como aparece en la tarjeta">
+
+    <button type="submit">Confirmar Pago</button>
+</form>
+
+<script>
+    function validarFormulario() {
+        const numero = document.getElementById("numeroTarjeta").value;
+        const cvv = document.getElementById("cvv").value;
+        const nombre = document.getElementById("nombreTitular").value;
+
+        if (!/^\d{16}$/.test(numero)) {
+            alert("El número de tarjeta debe contener 16 dígitos.");
+            return false;
+        }
+
+        if (!/^\d{3}$/.test(cvv)) {
+            alert("El CVV debe contener 3 dígitos.");
+            return false;
+        }
+
+        if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,}$/.test(nombre)) {
+            alert("El nombre del titular debe contener al menos 3 letras.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

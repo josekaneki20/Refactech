@@ -1,0 +1,196 @@
+/* General */
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+    background-color: #000;
+    color: #0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Evita el scroll innecesario */
+}
+
+/* Contenedor principal */
+.container {
+    min-width: 100%;
+    min-height: 100%;
+    display: block;
+    position: relative;
+}
+
+/* Menú */
+.menu {
+    width: 60px;
+    height: 60px;
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+.list, .intro {
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    display: flex;
+    position: fixed;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.75s ease;
+}
+
+.list {
+    background: #002d00;
+    width: 180px;
+    left: -180px;
+    opacity: 0;
+}
+.list .links {
+    background: #009700;
+    width: 120px;
+    margin: 5px 0;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    color: black;
+}
+
+.intro {
+    width: 100%;
+    padding: 0 8px;
+    left: 0;
+    text-align: center;
+}
+
+/* Botón del menú */
+.btn {
+    background: #000;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 10px;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+.btn::before, .btn::after {
+    background: #fff;
+    width: 20px;
+    height: 2px;
+    left: 10px;
+    display: block;
+    position: absolute;
+    transition: all 0.75s ease;
+    content: "";
+}
+.btn::before { top: 16px; }
+.btn::after { bottom: 16px; }
+
+.menu:focus-within .list {
+    left: 0;
+    opacity: 1;
+}
+.menu:focus-within .intro {
+    width: calc(100% - 120px);
+    left: 120px;
+}
+.menu:focus-within .btn::before {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+.menu:focus-within .btn::after {
+    transform: rotate(-45deg) translate(2px, -2px);
+}
+
+/* Estilos de letras */
+letra {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+}
+
+/* Contenedor central */
+.contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Formulario */
+.form-container {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0f0;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #0f0;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 10px;
+    color: #0f0;
+}
+
+/* Inputs y textarea */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #222;
+    border: 1px solid #0f0;
+    color: #0f0;
+    border-radius: 5px;
+}
+
+/* Botón */
+button {
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0c0;
+}
+
+/* 📱 Responsividad */
+@media (max-width: 768px) {
+    .contenedor img {
+        width: 80%;
+    }
+
+    .texto {
+        font-size: 18px;
+    }
+
+    .form-container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+}

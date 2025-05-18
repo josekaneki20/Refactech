@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Factura</title>
+    <link th:href="@{/tema/Factura.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+</head>
+<body>
+<div class="contenedor">
+    <h1>✅ ¡Gracias por tu compra!</h1>
+
+    <div class="info-cliente">
+        <p><strong>Nombre:</strong> <span th:text="${cliente.nombre}"></span></p>
+        <p><strong>Apellido paterno:</strong> <span th:text="${cliente.apellidoPaterno}"></span></p>
+        <p><strong>Apellido materno:</strong> <span th:text="${cliente.apellidoMaterno}"></span></p></span></p>
+        <p><strong>Fecha:</strong> <span th:text="${pedido.fecha}"></span></p>
+        <p><strong>Pedido N.º:</strong> <span th:text="${pedido.idPedido}"></span></p>
+    </div>
+
+    <h2>Resumen de compra:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${productos}">
+            <td th:text="${item.producto.nombre}"></td>
+            <td th:text="${item.cantidad}"></td>
+            <td th:text="${#numbers.formatDecimal(item.producto.precio, 1, 'POINT', 2, 'POINT')}"></td>
+            <td th:text="${#numbers.formatDecimal(item.cantidad * item.producto.precio, 1, 'POINT', 2, 'POINT')}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="total-final">
+        <p><strong>Total pagado:</strong> $<span th:text="${total}"></span></p>
+    </div>
+
+    <form th:action="@{/factura/descargar}" method="post">
+        <input type="hidden" name="idPedido" th:value="${pedido.idPedido}" />
+        <button type="submit">📄 Descargar factura en PDF</button>
+    </form>
+
+    <form th:action="@{/pagos/vaciarYvolver}" method="post" style="text-align: center; margin-top: 20px;">
+        <input type="hidden" name="idCliente" th:value="${pedido.cliente.idCliente}" />
+        <button type="submit" class="btn btn-success">
+            🛍️ Volver al Catálogo
+        </button>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>

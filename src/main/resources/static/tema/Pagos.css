@@ -1,0 +1,76 @@
+body {
+    background-color: #111;
+    color: #0f0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #0f0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid lime;
+    padding-bottom: 10px;
+}
+
+form {
+    background-color: #1a1a1a;
+    padding: 25px;
+    border: 2px solid lime;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0f0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #0f0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #000;
+    color: #0f0;
+    border: 1px solid lime;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+button {
+    width: 100%;
+    background-color: lime;
+    color: #000;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00cc00;
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}

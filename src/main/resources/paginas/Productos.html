@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Productos</title>
+  <link th:href="@{/tema/FormularioProducto.css}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+
+</head>
+<body>
+
+<h1 class="titulo-formulario">Registro de Productos</h1>
+
+<div class="formulario-contenedor">
+
+  <h5 th:text="${mensajeExito}"></h5>
+
+  <form th:action="@{productoguardar}" th:object="${productos}" method="post" enctype="multipart/form-data">
+
+    <div th:if="${errores}" class="mensaje-error">
+      <ul>
+        <li th:each="error : ${errores}" th:text="${error}"></li>
+      </ul>
+    </div>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" required>
+
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" required>
+
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+
+    <label for="marca">Marca:</label>
+    <select id="marca" name="marca" required>
+      <option th:each="con : ${listaMarcas}" th:value="${con.idMarca}" th:text="${con.marca}"></option>
+    </select>
+
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" name="categoria" required>
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option th:each="con : ${categorias}" th:value="${con.idCategoria}" th:text="${con.tipo}"></option>
+    </select>
+
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" required>
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option th:each="con : ${estados}" th:value="${con.idEstado}" th:text="${con.descripcion}"></option>
+    </select>
+
+    <label for="imagen">Imagen:</label>
+    <input type="file" id="imagen" name="imagen" accept="image/*" />
+    <div id="preview-container" style="margin-top: 1rem; text-align: center;">
+      <img id="preview" src="" alt="Vista previa" style="max-width: 100%; max-height: 200px; display: none; border: 1px solid #00ff00; border-radius: 6px;">
+    </div>
+
+    <!-- Stock inicial -->
+    <label for="stock">Stock Inicial:</label>
+    <input type="number" id="stock" name="stock" min="0" required>
+
+    <label for="sucursal">Sucursal:</label>
+    <select id="sucursal" name="sucursalId" required>
+      <option value="" disabled selected>Selecciona una sucursal</option>
+      <option th:each="s : ${sucursales}" th:value="${s.idSucursal}" th:text="${s.nombre}"></option>
+    </select>
+
+
+
+    <button type="submit">Guardar Producto</button>
+
+    <a th:href="@{/trabajador/inicio}">
+      <button type="button" style="margin-top: 10px;">Salir</button>
+    </a>
+
+  </form>
+</div>
+<script th:src="@{/js/preview.js}"></script>
+
+</body>
+</html>

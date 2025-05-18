@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo con Paginación</title>
+    <link th:href="@{/tema/CatalogoPaginacion.css}" rel="stylesheet" />
+    <link th:href="@{/iconos/bootstrap-icons.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/tema/estilos.css}">
+</head>
+<body>
+
+<!-- Layout principal -->
+<div class="layout">
+
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <header>Categorías</header>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a th:href="@{/catalogoPaginacion}"
+                       th:classappend="${categoriaId == null} ? 'activo'">Todas</a>
+                </li>
+                <li th:each="cat : ${categorias}">
+                    <a th:href="@{/catalogoPaginacion(categoriaId=${cat.idCategoria})}"
+                       th:classappend="${cat.idCategoria == categoriaId} ? 'activo'"
+                       th:text="${cat.tipo}">Categoría</a>
+                </li>
+            </ul>
+        </nav>
+        <button id="toggleSidebar" class="toggle-btn">☰</button>
+    </aside>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+
+        <!-- Header -->
+        <header class="header-principal">
+            <div class="logo">
+                <a th:href="@{/catalogoPaginacion}">
+                    <i class="bi bi-box"></i> RefactTech
+                </a>
+            </div>
+            <nav class="nav-header">
+
+                <div th:if="${nombreUsuario != null}" style="color: lime; font-weight: bold;">
+                    👤 Bienvenido, <span th:text="${nombreUsuario}">Usuario</span>
+                    |
+                    <a th:href="@{/carrito/{id}(id=${idCliente})}" title="Ver carrito">
+                        <i class="bi bi-cart4"></i>
+                    </a>
+                    |
+                    <a th:href="@{/pedidos/mis-pedidos}" style="color: #0f0;">📋 Mis pedidos</a>
+                    |
+                    <a th:href="@{/auth/logout}" style="color: red; font-weight: bold; margin-left: 8px;">
+                        Cerrar sesión
+                    </a>
+
+                </div>
+
+                <div th:if="${nombreUsuario == null}">
+                    <a th:href="@{/auth/login}">
+                        <i class="bi bi-person-circle" style="font-size: 1.5em; color: white;"></i>
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <script>
+            function confirmarLogout() {
+                if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+                    document.getElementById("logoutForm").submit();
+                }
+            }
+        </script>
+
+        <!-- Título -->
+        <h1>Catálogo de Productos</h1>
+
+        <!-- Productos -->
+        <div class="productos">
+            <div class="producto" th:each="producto : ${productos}">
+                <img th:if="${!#lists.isEmpty(producto.fotos)}"
+                     th:src="@{'/' + ${producto.fotos[0].urlFoto}}" class="producto-imagen" alt="Imagen producto" />
+
+                <img th:if="${#lists.isEmpty(producto.fotos)}"
+                     th:src="@{/tema/img/sin-imagen.png}"
+                     class="producto-imagen" alt="Sin imagen" />
+
+                <h2 th:text="${producto.nombre}"></h2>
+                <p th:text="${producto.descripcion}"></p>
+                <p><strong>Precio: $</strong><span th:text="${producto.precio}"></span></p>
+                <p>
+                    <strong>Stock disponible: </strong>
+                    <span th:text="${stockPorProducto[producto.idProducto]} + ' unidades'"
+                          th:classappend="${stockPorProducto[producto.idProducto]} &lt;= 5 ? 'stock-bajo' : 'stock-normal'">
+                    </span>
+                </p>
+
+                <form th:if="${stockPorProducto[producto.idProducto] > 0}"
+                      th:action="@{/carrito/agregar}" method="post">
+                    <input type="hidden" name="idCliente" th:value="${idCliente}" />
+                    <input type="hidden" name="idProducto" th:value="${producto.idProducto}" />
+                    <input type="number" name="cantidad" value="1" min="1" style="width: 50px;" />
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script para barra lateral -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById('toggleSidebar');
+      const sidebar = document.querySelector('.sidebar');
+      const layout = document.querySelector('.layout');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+      });
+    });
+</script>
+
+</body>
+</html>

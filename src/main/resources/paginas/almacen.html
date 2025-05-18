@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario de Almacén</title>
+    <link th:href="@{/tema/almacen.css}" rel="stylesheet" />
+</head>
+<body>
+<h1 style="text-align: center;">📦 Inventario del Almacén</h1>
+
+<div style="text-align: center; margin-bottom: 2rem;">
+    <a th:href="@{/almacen/pdf}" class="btn-pdf" target="_blank">
+        📄 Descargar PDF
+    </a>
+</div>
+
+<table border="1" style="width: 90%; margin: auto; text-align: center;">
+    <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Modelo</th>
+        <th>Sucursal</th>
+        <th>Stock Actual</th>
+        <th>Stock Mínimo</th>
+        <th>Fecha de Registro</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="registro : ${inventario}">
+        <td th:text="${registro.producto.nombre}">Nombre</td>
+        <td th:text="${registro.producto.modelo}">Modelo</td>
+        <td th:text="${registro.sucursal.nombre}">Sucursal</td>
+        <td th:text="${registro.stockActual}">0</td>
+        <td th:text="${registro.stockMinimo}">0</td>
+        <td th:text="${#dates.format(registro.fechaRegistro, 'dd/MM/yyyy')}">00/00/0000</td>
+    </tr>
+    </tbody>
+</table>
+<a href="/trabajador/inicio" class="btn btn-outline-success btn-lg mt-4">
+    🔙 Volver al Inicio
+</a>
+</body>
+</html>

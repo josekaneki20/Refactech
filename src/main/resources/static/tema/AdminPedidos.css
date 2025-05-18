@@ -1,0 +1,89 @@
+body {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #00ff00;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contenedor {
+    background-color: #1c1c1c;
+    border: 2px solid #00ff00;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #111;
+    color: #00ff00;
+}
+
+tr:hover {
+    background-color: #333;
+}
+
+select, button {
+    background-color: #0f0f0f;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+button:hover, select:hover {
+    background-color: #00ff00;
+    color: #0f0f0f;
+    cursor: pointer;
+}
+
+.icono {
+    font-size: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.volver-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #00ff00;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.volver-btn:hover {
+    background-color: #33ff33;
+    transform: scale(1.05);
+}

@@ -1,0 +1,149 @@
+body {
+    background-color: #111;
+    color: #0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0f0;
+}
+
+.contenedor-tabla {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #0f0;
+}
+
+th, td {
+    border: 1px solid #0f0;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #000;
+    font-weight: bold;
+}
+
+a {
+    color: cyan;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.img-carrito {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid #0f0;
+    border-radius: 5px;
+}
+
+/* Modal de vista previa */
+.preview-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.preview-img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 4px solid lime;
+    border-radius: 12px;
+    box-shadow: 0 0 20px lime;
+}
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.acciones a,
+.acciones form button {
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    min-width: 220px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Estilo base */
+.acciones a:hover,
+.acciones form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Botón Vaciar */
+.acciones a.vaciar {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Botón Seguir comprando */
+.acciones a.seguir {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* Botón Finalizar compra */
+.acciones button.finalizar {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.carrito-vacio {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 1.6rem;
+    color: #00ff66; /* verde brillante */
+    font-weight: bold;
+}
+
+.carrito-vacio a {
+    display: inline-block;
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.carrito-vacio a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+}
+<style>
+    .carrito-vacio {
+        background-color: red;
+    }
+</style>
+

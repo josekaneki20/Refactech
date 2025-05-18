@@ -1,0 +1,65 @@
+body {
+    background-color: #121212;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+h1 {
+    color: #2ecc71;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #2ecc71;
+    color: white;
+    font-weight: bold;
+}
+
+thead th {
+    padding: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #444;
+}
+
+tbody tr:hover {
+    background-color: #292929;
+    transition: background-color 0.2s;
+}
+
+tbody td:last-child {
+    white-space: nowrap;
+}
+.btn-pdf {
+    display: inline-block;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-pdf:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
