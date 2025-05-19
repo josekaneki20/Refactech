@@ -240,13 +240,12 @@ INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, edad, sexo, nu
 ('Administrador', 'Principal', 'Sistema', 35, 'M', '5559998888', 'admin@admin.com', '$2b$12$d/wkYASkjyGznSlkL8IuZuhlU6nXQRszyeXpA7B.2VkL8JZPVAZca', 'Oficina Central', 1);
 
 
-INSERT INTO inventario(id_Inventario,id_Producto, id_Sucursal,stock_actual,stock_minimo,fecha_registro) VALUES
-(2,2,1,20,1,'2025-05-18');
-
-INSERT INTO inventario(id_Inventario,id_Producto, id_Sucursal,stock_actual,stock_minimo,fecha_registro) VALUES
-(4, 1, 50, 5, '2025-05-18'),
-(5, 4, 15, 5, '2025-05-18'),
-(6, 5, 10, 2, '2025-05-18');
+INSERT INTO inventario (id_Producto, id_Sucursal, stock_actual, stock_minimo, fecha_registro) VALUES
+(1, 1, 50, 5, '2025-05-18'),
+(2, 1, 25, 5, '2025-05-18'),
+(3, 1, 20, 5, '2025-05-18'),
+(4, 1, 15, 5, '2025-05-18'),
+(5, 1, 10, 2, '2025-05-18');
 
 
 
