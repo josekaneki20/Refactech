@@ -1,0 +1,2 @@
+La contraseña del administrador que se creo de la base de datos es admin123 y este es el correo admin@admin.com
+a partir de ahi ya podra crear mas usuarios de tipo admin para la parte de los trabajadores
